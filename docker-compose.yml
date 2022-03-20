@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  front:
+    build: ./ #buildするdockerfileの位置
+    container_name: node #作成するコンテナの名前
+    volumes:
+      - ./front:/front
+    working_dir: /front
+    ports:
+      - 3000:3000
+    tty: true #コンテナが勝手に終了しないための設定
+    stdin_open: true #標準入出力とエラー出力をコンテナに結び付ける設定
+    environment:
+      - CHOKIDAR_USEPOLLING=true
